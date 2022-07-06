@@ -16,11 +16,11 @@ RUN mkdir -p /var/www
 
 WORKDIR /var/www
 
-COPY ./tools/* /tmp/
-RUN chmod 777 /tmp/mariadb_script.sh
+COPY ./tools/entry.sh .
+RUN chmod 777 ./mariadb_script.sh
 
 EXPOSE 9000
 
-ENTRYPOINT [ "/tmp/entry.sh" ]
+ENTRYPOINT [ "./entry.sh" ]
 
 CMD ["php-fpm"]
