@@ -15,7 +15,7 @@ if [ "$1" = "mysqld"]; then
 	if [ -d $DB_PATH/$DB_NAME ]; then
 		echo "$DB_NAME ALREADY EXISTS"
 	else
-		mysqld --user=root --bootstrap < /tmp/conf.sql
+		mysqld --user=root --bootstrap < ./conf.sql
 	fi
 
 fi
