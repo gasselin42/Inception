@@ -10,16 +10,16 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: "/home/gasselin/data/mariadb"
       o: bind
+      device: "/home/gasselin/data/mysql"
 
   wp:
     name: wp
     driver: local
     driver_opts:
       type: none
-      device: "/home/gasselin/data/wordpress"
       o: bind
+      device: "/home/gasselin/data/html"
 
 services:
   mariadb:
