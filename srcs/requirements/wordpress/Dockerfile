@@ -17,7 +17,7 @@ RUN mkdir -p /var/www
 WORKDIR /var/www
 
 COPY ./tools/entry.sh .
-RUN chmod 777 ./mariadb_script.sh
+RUN chmod 777 ./entry.sh
 
 EXPOSE 9000
 
