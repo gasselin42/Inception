@@ -1,7 +1,8 @@
 version: "3.8"
 
 networks:
-  docker-network:
+  app-network:
+    name: app-network
     driver: bridge
 
 volumes:
@@ -30,7 +31,7 @@ services:
     volumes:
       - db:/var/lib/mysql
     networks:
-      - docker-network
+      - app-network
     restart: always
 
   wordpress:
@@ -43,7 +44,7 @@ services:
     volumes:
       - wp:/var/www/html
     networks:
-      - docker-network
+      - app-network
     restart: always
 
   nginx:
@@ -56,7 +57,7 @@ services:
     volumes:
       - wp:/var/www/html
     networks:
-      - docker-network
+      - app-network
     ports:
-      - 443:443
+      - "443:443"
     restart: always
