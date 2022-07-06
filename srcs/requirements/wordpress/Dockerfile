@@ -2,6 +2,7 @@ FROM debian:buster
 
 RUN apt update
 RUN apt upgrade -y
+RUN apt install -y curl
 RUN apt install -y php-fpm
 RUN apt install -y php-mysql
 #RUN apt install -y mariadb-client
