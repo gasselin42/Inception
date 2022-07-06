@@ -11,7 +11,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: "/home/gasselin/data/mysql"
+      device: /home/gasselin/data/mysql
 
   wp:
     name: wp
@@ -19,7 +19,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: "/home/gasselin/data/html"
+      device: /home/gasselin/data/html
 
 services:
   mariadb:
@@ -38,23 +38,23 @@ services:
     build: ./requirements/wordpress
     env_file:
       - .env
+    depends_on:
+      - mariadb
     volumes:
       - wp:/var/www/html
     networks:
       - docker-network
     restart: always
-    depends_on:
-      - mariadb
 
   nginx:
     container_name: nginx
     build: ./requirements/nginx
     env_file:
       - .env
+    depends_on:
+      - wordpress
     volumes:
       - wp:/var/www/html
     networks:
       - docker-network
     restart: always
-    depends_on:
-      - wordpress
