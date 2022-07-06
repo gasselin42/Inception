@@ -5,7 +5,7 @@ set -euxo pipefail
 if [ "$1" = "php-fpm"]; then
 
 	if [ ! -d "/var/www/html" -o ]; then
-		mkdir html
+		mkdir -p html
 	fi
 	
 	if [ ! -f "/var/www/html/wp-config.php"]; then
