@@ -1,0 +1,60 @@
+version: "3.8"
+
+networks:
+  docker-network:
+    driver: bridge
+
+volumes:
+  db:
+    name: db
+    driver: local
+    driver_opts:
+      type: none
+      device: "/home/gasselin/data/mariadb"
+      o: bind
+
+  wp:
+    name: wp
+    driver: local
+    driver_opts:
+      type: none
+      device: "/home/gasselin/data/wordpress"
+      o: bind
+
+services:
+  mariadb:
+    image: mariadb
+    build: ./requirements/mariadb
+    env_file:
+      - .env
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - docker-network
+    restart: always
+
+  wordpress:
+    image: wordpress
+    build: ./requirements/wordpress
+    env_file:
+      - .env
+    volumes:
+      - wp:/var/www/html
+    networks:
+      - docker-network
+    restart: always
+    depends_on:
+      - mariadb
+
+  nginx:
+    image: nginx
+    build: ./requirements/nginx
+    env_file:
+      - .env
+    volumes:
+      - wp:/var/www/html
+    networks:
+      - docker-network
+    restart: always
+    depends_on:
+      - wordpress
