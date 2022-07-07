@@ -2,11 +2,11 @@
 
 set -euxo pipefail
 
-if [ ! -d "/var/www/html" -o ]; then
+if [ ! -d "/var/www/html" ]; then
 	mkdir -p html
 fi
 
-if [ ! -f "/var/www/html/wp-config.php"]; then
+if [ ! -f "/var/www/html/wp-config.php" ]; then
 
 	wp core download --path=html/
 
