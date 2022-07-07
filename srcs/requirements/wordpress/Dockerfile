@@ -5,7 +5,7 @@ RUN apt upgrade -y
 RUN apt install -y curl
 RUN apt install -y php-fpm
 RUN apt install -y php-mysql
-#RUN apt install -y mariadb-client
+RUN apt install -y mariadb-client
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
