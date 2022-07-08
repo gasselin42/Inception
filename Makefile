@@ -6,7 +6,7 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 13:55:36 by gasselin          #+#    #+#              #
-#    Updated: 2022/07/08 14:24:48 by gasselin         ###   ########.fr        #
+#    Updated: 2022/07/08 14:25:42 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,4 +27,4 @@ clean:
 vclean: clean
 	docker volume rm $(shell docker volume ls -q)
 
-.PHONY: all up down build clean
+.PHONY: all up down build clean vclean
