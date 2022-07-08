@@ -6,7 +6,7 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 13:55:36 by gasselin          #+#    #+#              #
-#    Updated: 2022/07/06 17:19:58 by gasselin         ###   ########.fr        #
+#    Updated: 2022/07/08 14:24:48 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,5 +23,8 @@ build:
 
 clean:
 	docker-compose -f srcs/docker-compose.yml down --rmi all
+
+vclean: clean
+	docker volume rm $(shell docker volume ls -q)
 
 .PHONY: all up down build clean
