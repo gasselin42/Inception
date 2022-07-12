@@ -17,7 +17,7 @@ RUN openssl req -x509 \
 	-keyout /etc/ssl/server.key \
 	-out /etc/ssl/server.crt
 
-# RUN openssl genrsa -out $SSL_CERT_KEY 2048
+RUN openssl genrsa -out $SSL_CERT_KEY 2048
 
 EXPOSE 443
 
