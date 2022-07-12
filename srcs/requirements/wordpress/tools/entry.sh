@@ -3,12 +3,12 @@
 set -euxo pipefail
 
 if [ ! -d "/var/www/html" ]; then
-	mkdir -p html
+	mkdir html
 fi
 
 if [ ! -f "/var/www/html/wp-config.php" ]; then
 
-	wp core download --path=html/
+	wp core download --allow-root --path=html/
 
 	wp config create --allow-root \
 		--dbname=$DB_NAME \
