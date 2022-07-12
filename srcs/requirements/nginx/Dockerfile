@@ -8,8 +8,6 @@ RUN rm -rf /var/lib/apt/lists/*
 
 COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN mkdir /etc/nginx/ssl
-
 RUN openssl req -x509 \
 	-sha256 -days 3650 \
 	-nodes -newkey rsa:2048 \
