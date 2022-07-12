@@ -14,8 +14,8 @@ RUN openssl req -x509 \
 	-sha256 -days 3650 \
 	-nodes -newkey rsa:2048 \
 	-subj "/C=CA/ST=Quebec/L=Quebec City/O=42 Network/OU=42 Quebec/CN=gasselin.42.fr" \
-	-keyout /etc/nginx/ssl/server.key \
-	-out /etc/nginx/ssl/server.crt
+	-keyout /etc/ssl/server.key \
+	-out /etc/ssl/server.crt
 
 EXPOSE 443
 
