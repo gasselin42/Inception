@@ -6,14 +6,18 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 13:55:36 by gasselin          #+#    #+#              #
-#    Updated: 2022/07/12 13:30:32 by gasselin         ###   ########.fr        #
+#    Updated: 2022/07/12 15:18:15 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+DATADIR = /home/gasselin/data
 
 all: up
 
 up:
-	docker-compose -f srcs/docker-compose.yml up -d
+	mkdir $(DATADIR)/html
+	mkdir $(DATADIR)/mysql
+	docker-compose -f srcs/docker-compose.yml up --build
 
 down:
 	docker-compose -f srcs/docker-compose.yml down
@@ -31,5 +35,7 @@ vclean: clean
 
 fclean: vclean
 	docker rmi debian:buster -f
+	rm -rf $(DATADIR)/html
+	rm -rf $(DATADIR)/mysql
 
 .PHONY: all up down build clean vclean fclean
