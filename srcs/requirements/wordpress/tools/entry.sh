@@ -32,8 +32,8 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--role=author \
 		--path=/var/www/html
 
-	#wp theme install twentyten
-	#wp theme activate twentyten
+	wp theme install twentyten --allow-root
+	wp theme activate twentyten --allow-root
 
 fi
 
