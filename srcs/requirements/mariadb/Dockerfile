@@ -17,4 +17,4 @@ EXPOSE 3306
 
 ENTRYPOINT [ "./mariadb_script.sh" ]
 
-CMD ["mysqld", "--user=root", "--skip-networking=0"]
+CMD ["mysqld"]
