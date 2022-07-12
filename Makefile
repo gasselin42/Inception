@@ -6,7 +6,7 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 13:55:36 by gasselin          #+#    #+#              #
-#    Updated: 2022/07/12 13:26:22 by gasselin         ###   ########.fr        #
+#    Updated: 2022/07/12 13:30:32 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ clean:
 
 vclean: clean
 	docker volume rm $(shell docker volume ls -q)
-	@rm -rf /home/gasselin/data/html/
-	@rm -rf /home/gasselin/data/mysql/
+	@sudo rm -rf /home/gasselin/data/html/*
+	@sudo rm -rf /home/gasselin/data/mysql/*
 
 fclean: vclean
 	docker rmi debian:buster -f
