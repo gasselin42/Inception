@@ -15,6 +15,8 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--dbuser=$DB_USR \
 		--dbpass=$DB_PWD \
 		--dbhost=$DB_HOST \
+		--dbcharset="utf8" \
+		--dbcollate="utf8_general_ci" \
 		--path=/var/www/html
 
 	wp core install --allow-root \
@@ -23,6 +25,7 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--admin_user=$WP_ADMIN_LOGIN \
 		--admin_password=$WP_ADMIN_PWD \
 		--admin_email=$WP_ADMIN_EMAIL \
+		--skip-email \
 		--path=/var/www/html
 
 	wp user create --allow-root \
@@ -37,4 +40,4 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 
 fi
 
-exec "$@"
+exec $@

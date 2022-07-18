@@ -6,7 +6,7 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 13:55:36 by gasselin          #+#    #+#              #
-#    Updated: 2022/07/12 15:18:15 by gasselin         ###   ########.fr        #
+#    Updated: 2022/07/12 15:22:03 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ all: up
 up:
 	mkdir $(DATADIR)/html
 	mkdir $(DATADIR)/mysql
-	docker-compose -f srcs/docker-compose.yml up --build
+	docker-compose -f srcs/docker-compose.yml up -d
 
 down:
 	docker-compose -f srcs/docker-compose.yml down
