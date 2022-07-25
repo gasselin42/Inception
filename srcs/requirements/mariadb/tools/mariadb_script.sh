@@ -8,8 +8,8 @@ sed -Ei "/^datadir/c datadir = /var/lib/mysql" /etc/mysql/mariadb.conf.d/50-serv
 
 mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --skip-test-db --rpm > /dev/null
 
+# mysqld --user=mysql --datadir=/var/lib/mysql &
 mysqld --skip-networking=1 &
-sleep 5
 
 for i in {0..60}; do
 	if mariadb -u root -p12345 --database=mysql <<<'SELECT 1;' &> /dev/null; then
@@ -23,6 +23,13 @@ if [ "$i" = 60 ]; then
 fi
 
 mariadb -u root -p12345 < ./conf.sql
+
+# mysql -e "CREATE DATABASE IF NOT EXISTS ${DB_NAME};"
+# mysql -e "CREATE USER IF NOT EXISTS '${DB_USR}'@'localhost' IDENTIFIED BY '${DB_PWD}';"
+# mysql -e "GRANT ALL PRIVILEGES ON \`${DB_NAME}\`.* TO \`${DB_USR}\`@'%' IDENTIFIED BY '${DB_PWD};"
+# mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PWD}';"
+# mysql -u root -p${DB_ROOT_PWD} -e "FLUSH PRIVILEGES;"
+
 killall mysqld
 
 exec $@

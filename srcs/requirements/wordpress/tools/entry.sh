@@ -2,13 +2,16 @@
 
 set -euxo pipefail
 
-if [ ! -d "/var/www/html" ]; then
-	mkdir html
-fi
-
 if [ ! -f "/var/www/html/wp-config.php" ]; then
 
-	wp core download --allow-root --path=html/
+	wp core download --allow-root --path="/var/www/html"
+
+	for i in {0..60}; do
+		if mariadb -h$DB_HOST -u$DB_USR -p$DB_PWD --database=$DB_NAME <<<'SELECT 1;' &>/dev/null; then
+			break
+		fi
+		sleep 1
+	done
 
 	wp config create --allow-root \
 		--dbname=$DB_NAME \
