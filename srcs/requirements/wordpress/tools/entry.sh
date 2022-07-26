@@ -8,6 +8,7 @@ for i in {0..60}; do
 	fi
 	sleep 1
 done
+
 if [ "$i" = 60 ]; then
 	echo "Can't connect to database"
 fi
@@ -41,8 +42,8 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--role=author \
 		--path=/var/www/html
 
-	wp theme install twentyten --allow-root
-	wp theme activate twentyten --allow-root
+	# wp theme install twentyten --allow-root
+	# wp theme activate twentyten --allow-root
 
 fi
 
