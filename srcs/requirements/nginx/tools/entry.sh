@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-cat > /etc/nginx/conf.d/default.conf <<EOF
+cat >/etc/nginx/conf.d/default.conf <<EOF
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
