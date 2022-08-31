@@ -5,6 +5,7 @@ RUN apt upgrade -y
 RUN apt install -y curl
 RUN apt install -y php-fpm
 RUN apt install -y php-mysql
+RUN apt install -y php-common
 RUN apt install -y mariadb-client
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -23,4 +24,7 @@ EXPOSE 9000
 
 ENTRYPOINT [ "./entry.sh" ]
 
-CMD ["php-fpm"]
+CMD ["php-fpm7.3", "-F", "-R"]
+
+#-F pour force to stay in foreground
+#-R pour allow pool to run as root
