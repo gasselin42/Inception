@@ -12,8 +12,7 @@ RUN chmod 777 /run/mysqld
 RUN chown -R mysql:mysql /var/lib/mysql
 RUN chown -R mysql:mysql /run/mysqld
 
-COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ./conf/conf.sql .
+COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d
 COPY ./tools/mariadb_script.sh .
 
 RUN chmod 777 ./mariadb_script.sh
