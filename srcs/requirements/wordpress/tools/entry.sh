@@ -27,11 +27,11 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--path="/var/www/html"
 
 	wp core install --allow-root \
-		--url=$DOMAIN_NAME \
-		--title=$WP_TITLE \
-		--admin_user=$WP_ADMIN_LOGIN \
-		--admin_password=$WP_ADMIN_PWD \
-		--admin_email=$WP_ADMIN_EMAIL \
+		--url="${DOMAIN_NAME}" \
+		--title="${WP_TITLE}" \
+		--admin_user="${WP_ADMIN_LOGIN}" \
+		--admin_password="${WP_ADMIN_PWD}" \
+		--admin_email="${WP_ADMIN_EMAIL}" \
 		--skip-email \
 		--path="/var/www/html"
 
