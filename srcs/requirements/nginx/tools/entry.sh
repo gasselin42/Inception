@@ -18,7 +18,7 @@ server {
 	ssl_protocols		TLSv1.2 TLSv1.3;
 
     location / {
-		autoindex	on
+		autoindex	on;
 		try_files	\$uri \$uri/ =404;
 	}
 
