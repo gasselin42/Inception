@@ -7,7 +7,7 @@ dataDB=/var/lib/mysql/init_dataDB.sql
 if [ ! -f $dataDB ]; then
 	chown -R mysql:mysql /var/lib/mysql
 
-	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --skip-test-db --rpm > /dev/null
+	mysql_install_db --datadir=/var/lib/mysql --user=mysql --skip-test-db > /dev/null
 
 	cat > $dataDB <<EOF
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
@@ -20,7 +20,7 @@ EOF
 	mysqld --skip-networking &
 
 	for i in {0..30}; do
-		if mariadb -u root -p $DB_ROOT_PWD --database=mysql <<<'SELECT 1;' &> /dev/null; then
+		if mysql --user=root --password=$DB_ROOT_PWD --database=mysql <<<'SELECT 1;' &> /dev/null; then
 			break
 		fi
 		sleep 1
@@ -30,7 +30,7 @@ EOF
 		echo "Cannot connect to databse"
 	fi
 
-	mariadb -u root -p $DB_ROOT_PWD < $dataDB && killall mysqld
+	mysql --user=root --password=$DB_ROOT_PWD && killall mysqld
 fi
 
 exec "$@"
