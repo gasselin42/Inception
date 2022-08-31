@@ -4,13 +4,9 @@ RUN apt update
 RUN apt upgrade -y
 RUN apt install -y mariadb-server
 RUN apt install -y mariadb-client
-RUN rm -rf /var/lib/apt/lists/*
+# RUN rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /run/mysqld /var/lib/mysql
-RUN chmod 777 /var/lib/mysql
-RUN chmod 777 /run/mysqld
-RUN chown -R mysql:mysql /var/lib/mysql
-RUN chown -R mysql:mysql /run/mysqld
+RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
 COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d
 COPY ./tools/mariadb_script.sh .
