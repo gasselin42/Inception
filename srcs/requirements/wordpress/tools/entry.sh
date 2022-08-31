@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -euo pipefail
 
 for i in {0..60}; do
 	if mariadb -h$DB_HOST -u$DB_USR -p$DB_PWD --database=$DB_NAME <<<'SELECT 1;' &>/dev/null; then
