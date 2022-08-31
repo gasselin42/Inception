@@ -27,8 +27,8 @@ EOF
 		sleep 1
 	done
 
-	if [ "$i" = 0 ]; then
-		exit 1
+	if [ "$i" = 30 ]; then
+		echo "Cannot connect to databse"
 	fi
 
 	mysql --user=root --password=$DB_ROOT_PWD < $dataDB && killall mysqld

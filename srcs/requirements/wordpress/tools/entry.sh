@@ -3,7 +3,7 @@
 set -euo pipefail
 
 for i in {0..30}; do
-	if mariadb -h$DB_HOST -u$DB_USR -p$DB_PWD --database=$DB_NAME <<<'SELECT 1;' &>/dev/null; then
+	if mysql -u$DB_USR -p$DB_PWD --database=$DB_NAME <<<'SELECT 1;' &>/dev/null; then
 		break
 	fi
 	sleep 1
@@ -42,8 +42,7 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--role=author \
 		--path=/var/www/html
 
-	# wp theme install twentyten --allow-root
-	# wp theme activate twentyten --allow-root
+	# wp theme install twentyten --allow-root --activate
 
 fi
 
