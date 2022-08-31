@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-for i in {0..60}; do
+for i in {0..30}; do
 	if mariadb -h$DB_HOST -u$DB_USR -p$DB_PWD --database=$DB_NAME <<<'SELECT 1;' &>/dev/null; then
 		break
 	fi
 	sleep 1
 done
 
-if [ "$i" = 60 ]; then
+if [ "$i" = 30 ]; then
 	echo "Can't connect to database"
 fi
 
@@ -47,4 +47,4 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 
 fi
 
-exec $@
+exec "$@"
