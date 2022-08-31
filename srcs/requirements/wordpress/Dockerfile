@@ -17,8 +17,9 @@ RUN mkdir -p /var/www /run/php
 
 WORKDIR /var/www
 
-COPY ./tools/* .
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+COPY ./tools/* .
+RUN chmod 777 ./entry.sh
 
 EXPOSE 9000
 

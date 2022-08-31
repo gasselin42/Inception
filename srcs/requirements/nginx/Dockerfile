@@ -9,6 +9,7 @@ RUN apt install -y openssl
 WORKDIR /tmp
 
 COPY ./tools/* .
+RUN chmod 777 ./entry.sh
 
 RUN mkdir /etc/nginx/ssl
 
