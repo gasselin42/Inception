@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-# sed -i 's/.*bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
-# sed -Ei '/^(#)?port/c port = 3306' /etc/mysql/mariadb.conf.d/50-server.cnf
+sed -i 's/.*bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+sed -Ei '/^(#)?port/c port = 3306' /etc/mysql/mariadb.conf.d/50-server.cnf
 sed -Ei "/^datadir/c datadir = /var/lib/mysql" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 dataDB=/var/lib/mysql/init_dataDB.sql
