@@ -4,6 +4,8 @@ set -euo pipefail
 
 if [ ! -f "/var/www/html/wp-config.php" ]; then
 
+	wp core download --allow-root --path="/var/www/html"
+
 	for i in {0..30}; do
 		if mariadb -h$DB_HOST -u$DB_USR -p$DB_PWD --database=$DB_NAME <<< 'SELECT 1;' &>/dev/null; then
 			break
@@ -14,8 +16,6 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 	if [ "$i" = 30 ]; then
 		echo "Can't connect to database"
 	fi
-
-	wp core download --allow-root --path="/var/www/html"
 
 	wp config create --allow-root \
 		--dbname=$DB_NAME \
