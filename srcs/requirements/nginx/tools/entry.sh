@@ -37,4 +37,4 @@ server {
 }
 EOF
 
-exec "$@"
+$@
