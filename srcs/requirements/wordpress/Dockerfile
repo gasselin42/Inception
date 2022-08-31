@@ -23,7 +23,7 @@ RUN chmod 777 ./entry.sh
 
 EXPOSE 9000
 
-ENTRYPOINT [ "./entry.sh" ]
+ENTRYPOINT [ "bash", "entry.sh" ]
 
 CMD ["php-fpm7.3", "-F", "-R"]
 

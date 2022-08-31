@@ -24,6 +24,6 @@ RUN openssl req -x509 \
 
 EXPOSE 443
 
-ENTRYPOINT [ "./entry.sh" ]
+ENTRYPOINT [ "bash", "entry.sh" ]
 
 CMD ["nginx", "-g", "daemon off;"]

@@ -16,6 +16,6 @@ RUN chmod 777 ./entry.sh
 
 EXPOSE 3306
 
-ENTRYPOINT [ "./entry.sh" ]
+ENTRYPOINT [ "bash", "entry.sh" ]
 
 CMD ["mysqld"]
