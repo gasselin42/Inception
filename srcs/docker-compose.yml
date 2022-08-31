@@ -1,25 +1,22 @@
 version: "3.8"
 
 networks:
-  app-network:
-    name: app-network
+  inception:
     driver: bridge
 
 volumes:
   db:
-    name: db
     driver: local
     driver_opts:
-      type: none
-      o: bind
+      type: 'none'
+      o: 'bind'
       device: /home/gasselin/data/mysql
 
   wp:
-    name: wp
     driver: local
     driver_opts:
-      type: none
-      o: bind
+      type: 'none'
+      o: 'bind'
       device: /home/gasselin/data/html
 
 services:
@@ -31,7 +28,7 @@ services:
     volumes:
       - db:/var/lib/mysql
     networks:
-      - app-network
+      - inception
     restart: always
 
   wordpress:
@@ -44,7 +41,7 @@ services:
     volumes:
       - wp:/var/www/html
     networks:
-      - app-network
+      - inception
     restart: always
 
   nginx:
@@ -57,7 +54,7 @@ services:
     volumes:
       - wp:/var/www/html
     networks:
-      - app-network
+      - inception
     ports:
-      - "443:443"
+      - 443:443
     restart: always
