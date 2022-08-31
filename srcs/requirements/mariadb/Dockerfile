@@ -10,7 +10,7 @@ WORKDIR /tmp
 
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
-COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d
+COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./tools/entry.sh .
 
 RUN chmod 777 ./entry.sh

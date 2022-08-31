@@ -1,3 +1,8 @@
+#!/bin/bash
+
+set -euo pipefail
+
+cat > /etc/nginx/conf.d/default.conf <<EOF
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
@@ -8,8 +13,8 @@ server {
     root /var/www/html;
 
 	# ssl on;
-    ssl_certificate 	/etc/ssl/server.crt;
-    ssl_certificate_key	/etc/ssl/server.key;
+    ssl_certificate 	/etc/nginx/ssl/server.crt;
+    ssl_certificate_key	/etc/nginx/ssl/server.key;
 	ssl_protocols		TLSv1.2 TLSv1.3;
 
     location / {
@@ -29,3 +34,6 @@ server {
         fastcgi_param			PATH_INFO $fastcgi_path_info;
     }
 }
+EOF
+
+exec "$@"
