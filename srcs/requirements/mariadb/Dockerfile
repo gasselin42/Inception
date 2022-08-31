@@ -6,15 +6,17 @@ RUN apt install -y mariadb-server
 RUN apt install -y mariadb-client
 # RUN rm -rf /var/lib/apt/lists/*
 
+WORKDIR /tmp
+
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
 COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d
-COPY ./tools/mariadb_script.sh .
+COPY ./tools/entry.sh .
 
-RUN chmod 777 ./mariadb_script.sh
+RUN chmod 777 ./entry.sh
 
 EXPOSE 3306
 
-ENTRYPOINT [ "./mariadb_script.sh" ]
+ENTRYPOINT [ "./entry.sh" ]
 
 CMD ["mysqld"]
