@@ -9,7 +9,10 @@ sed -Ei "/^datadir/c datadir = /var/lib/mysql" /etc/mysql/mariadb.conf.d/50-serv
 dataDB=/var/lib/mysql/init_dataDB.sql
 
 if [ ! -f $dataDB ]; then
+	chown -R mysql:mysql /var/lib/mysql
+
 	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --skip-test-db --rpm > /dev/null
+
 	cat > $dataDB <<EOF
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
 CREATE USER IF NOT EXISTS '$DB_USR'@'%' IDENTIFIED BY '$DB_PWD';
