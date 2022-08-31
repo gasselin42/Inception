@@ -31,6 +31,7 @@ EOF
 		exit 1
 	fi
 
-mysql --user=root --password=$DB_ROOT_PWD < $dataDB && killall mysqld
+	mysql --user=root --password=$DB_ROOT_PWD < $dataDB && killall mysqld
+fi
 
 exec "$@"
