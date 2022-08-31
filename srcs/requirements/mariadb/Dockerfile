@@ -1,5 +1,7 @@
 FROM debian:buster
 
+EXPOSE 3306
+
 RUN apt update
 RUN apt upgrade -y
 RUN apt install -y mariadb-server
@@ -14,8 +16,6 @@ COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./tools/* .
 RUN chmod 777 ./entry.sh
 
-EXPOSE 3306
-
-ENTRYPOINT [ "bash", "entry.sh" ]
+ENTRYPOINT [ "./entry.sh" ]
 
 CMD ["mysqld"]
