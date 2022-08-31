@@ -3,7 +3,7 @@
 set -euo pipefail
 
 for i in {0..30}; do
-	if mysql -u$DB_USR -p$DB_ROOT_PWD --database=$DB_NAME <<<'SELECT 1;' &>/dev/null; then
+	if mariadb -h$DB_HOST -u$DB_USR -p$DB_PWD --database=$DB_NAME <<<'SELECT 1;' &>/dev/null; then
 		break
 	fi
 	sleep 1
