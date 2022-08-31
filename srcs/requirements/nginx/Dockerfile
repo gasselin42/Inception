@@ -6,10 +6,7 @@ RUN apt install -y nginx
 RUN apt install -y openssl
 # RUN rm -rf /var/lib/apt/lists/*
 
-WORKDIR /tmp
-
-COPY ./tools/* .
-RUN chmod 777 ./entry.sh
+COPY ./conf/* /etc/nginx/http.d/default.conf
 
 RUN mkdir /etc/nginx/ssl
 
@@ -20,10 +17,6 @@ RUN openssl req -x509 \
 	-keyout /etc/nginx/ssl/server.key \
 	-out /etc/nginx/ssl/server.crt
 
-# RUN openssl genrsa -out $SSL_CERT_KEY 2048
-
 EXPOSE 443
-
-ENTRYPOINT [ "bash", "entry.sh" ]
 
 CMD ["nginx", "-g", "daemon off;"]
