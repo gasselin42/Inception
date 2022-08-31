@@ -24,7 +24,7 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--dbhost=$DB_HOST \
 		--dbcharset="utf8" \
 		--dbcollate="utf8_general_ci" \
-		--path=/var/www/html
+		--path="/var/www/html"
 
 	wp core install --allow-root \
 		--url=$DOMAIN_NAME \
@@ -33,16 +33,16 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--admin_password=$WP_ADMIN_PWD \
 		--admin_email=$WP_ADMIN_EMAIL \
 		--skip-email \
-		--path=/var/www/html
+		--path="/var/www/html"
 
 	wp user create --allow-root \
 		$WP_USER_LOGIN \
 		$WP_USER_EMAIL \
 		--user_pass=$WP_USER_PWD \
 		--role=author \
-		--path=/var/www/html
+		--path="/var/www/html"
 
-	# wp theme install twentyten --allow-root --activate
+	wp theme install twentyten --allow-root --activate
 
 fi
 
