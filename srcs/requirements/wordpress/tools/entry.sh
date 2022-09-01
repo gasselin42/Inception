@@ -17,18 +17,27 @@ if [ "$1" = "php-fpm7.3" ]; then
 
 	if [ ! -f "/var/www/html/wp-config.php" ]; then
 
-		wp core download --allow-root --path="/var/www/html"
+		# wp core download --allow-root --path="/var/www/html"
 		rm -f /var/www/html/wp-config-sample.php
 
+		# wp config create \
+		# 	--allow-root \
+		# 	--dbname=$WP_DATABASE \
+		# 	--dbuser=$DB_USER \
+		# 	--dbpass=$DB_USER_PWD \
+		# 	--dbhost=$DB_SERVER \
+		# 	--dbcharset="utf8" \
+		# 	--dbcollate="utf8_general_ci" \
+		# 	--path="/var/www/html"
 
-		wp config create --allow-root \
-			--dbname=$DB_NAME \
-			--dbuser=$DB_USR \
-			--dbpass=$DB_PWD \
-			--dbhost=$DB_HOST \
-			--dbcharset="utf8" \
-			--dbcollate="utf8_general_ci" \
-			--path="/var/www/html"
+		# wp config create --allow-root \
+		# 	--dbname=$DB_NAME \
+		# 	--dbuser=$DB_USR \
+		# 	--dbpass=$DB_PWD \
+		# 	--dbhost=$DB_HOST \
+		# 	--dbcharset="utf8" \
+		# 	--dbcollate="utf8_general_ci" \
+		# 	--path="/var/www/html"
 
 		wp core install --allow-root \
 			--url="${DOMAIN_NAME}" \
