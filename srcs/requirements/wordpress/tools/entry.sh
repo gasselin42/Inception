@@ -20,16 +20,6 @@ if [ "$1" = "php-fpm7.3" ]; then
 		wp core download --allow-root --path="/var/www/html"
 		rm -f /var/www/html/wp-config-sample.php
 
-		# wp config create \
-		# 	--allow-root \
-		# 	--dbname=wordpress \
-		# 	--dbuser=wordpress \
-		# 	--dbpass=password \
-		# 	--dbhost=mariadb \
-		# 	--dbcharset="utf8" \
-		# 	--dbcollate="utf8_general_ci" \
-		# 	--path="/var/www/html"
-
 		wp config create \
 			--allow-root \
 			--dbname=$DB_NAME \
@@ -58,7 +48,7 @@ if [ "$1" = "php-fpm7.3" ]; then
 			--user_pass=$WP_USER_PWD \
 			--path="/var/www/html"
 
-		# wp theme install twentyten --allow-root --activate
+		wp theme install twentyten --allow-root --activate
 
 	fi
 
