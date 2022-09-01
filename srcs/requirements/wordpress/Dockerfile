@@ -11,13 +11,12 @@ RUN apt install -y php-common
 RUN apt install -y mariadb-client
 # RUN rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /var/www/html
+WORKDIR /var/www
+
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
-
-RUN mkdir -p /var/www /run/php
-
-WORKDIR /var/www
+RUN mv -f wp-cli.phar /usr/local/bin/wp
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 COPY ./tools/* .
