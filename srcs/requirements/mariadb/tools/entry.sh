@@ -21,12 +21,12 @@ EOF
 
 		# mysqld --skip-networking=1 &
 
-		# for i in {0..30}; do
-		# 	if mysqld --user=root --password=root --database=mysql <<<'SELECT 1;' &> /dev/null; then
-		# 		break
-		# 	fi
-		# 	sleep 1
-		# done
+		for i in {0..30}; do
+			if mariadb -u root -proot --database=mysql <<<'SELECT 1;' &> /dev/null; then
+				break
+			fi
+			sleep 1
+		done
 
 		# if [ "$i" = 30 ]; then
 		# 	echo "Cannot connect to databse"
