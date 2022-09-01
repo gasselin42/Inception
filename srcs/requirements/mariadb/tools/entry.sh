@@ -20,7 +20,7 @@ EOF
 	mysqld --skip-networking=1 &
 
 	for i in {0..30}; do
-		if mysql --user=root --password=root --database=mysql <<<'SELECT 1;' &> /dev/null; then
+		if mariadb -u root -proot --database=mysql <<<'SELECT 1;' &> /dev/null; then
 			break
 		fi
 		sleep 1
@@ -30,7 +30,7 @@ EOF
 		echo "Cannot connect to databse"
 	fi
 
-	mysql --user=root --password=root < $dataDB && killall mysqld
+	mariadb -u root -proot < $dataDB && killall mysqld
 fi
 
 exec "$@"
