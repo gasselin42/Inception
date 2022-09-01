@@ -4,11 +4,9 @@ set -euo pipefail
 
 if [ "$1" = "mysqld" ]; then
 
-	# dataDB=/var/lib/mysql/init_dataDB.sql
+	dataDB=/var/lib/mysql/init_dataDB.sql
 
 	if [ ! -f $dataDB ]; then
-		chown -R mysql:mysql /var/lib/mysql
-
 		mysql_install_db --datadir=/var/lib/mysql --user=mysql --skip-test-db > /dev/null
 
 		cat > $dataDB <<EOF
