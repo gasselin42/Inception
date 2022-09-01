@@ -8,8 +8,8 @@ if [ "$1" = "mysqld" ]; then
 		mysql_install_db --datadir=/var/lib/mysql --user=mysql --skip-test-db > /dev/null
 	fi
 
+	dataDB=/var/lib/mysql/init_dataDB.sql
 	if [ ! -f $dataDB ]; then
-		dataDB=/var/lib/mysql/init_dataDB.sql
 
 		cat > $dataDB <<EOF
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
