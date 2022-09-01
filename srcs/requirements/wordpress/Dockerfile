@@ -17,7 +17,7 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 RUN mkdir -p /var/www /run/php
 
-# WORKDIR /var/www
+WORKDIR /var/www
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 COPY ./tools/* .
