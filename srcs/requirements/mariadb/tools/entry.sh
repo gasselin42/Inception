@@ -33,4 +33,4 @@ EOF
 	mariadb -u root -proot && killall mysqld
 fi
 
-$@
+exec "$@"
