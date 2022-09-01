@@ -10,7 +10,7 @@ RUN apt install -y php-mysql
 RUN apt install -y php-common
 RUN apt install -y mariadb-client
 
-RUN mkdir -p /var/www/html
+RUN mkdir -p /var/www/html /run/php
 WORKDIR /var/www
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
