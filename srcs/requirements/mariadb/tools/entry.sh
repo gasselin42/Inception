@@ -55,7 +55,7 @@ if [ "$1" = "mysqld" ]; then
 		# fi
 
 		# mysql --user=root --password=root < $dataDB && killall mysqld
-	fi
+	# fi
 
 fi
 
