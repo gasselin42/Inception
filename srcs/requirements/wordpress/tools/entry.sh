@@ -48,7 +48,7 @@ if [ "$1" = "php-fpm7.3" ]; then
 			--user_pass=$WP_USER_PWD \
 			--path="/var/www/html"
 
-		wp theme install twentyten --allow-root --activate
+		wp theme install twentyten --allow-root --activate --path="/var/www/html"
 
 	fi
 
