@@ -17,6 +17,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PWD';
 FLUSH PRIVILEGES;
 EOF
 
+		mysqld --skip-networking=1 &
+
 		for i in {0..30}; do
 			if mysqld --user=root --password=root --database=mysql <<<'SELECT 1;' &> /dev/null; then
 				break
