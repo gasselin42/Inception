@@ -23,7 +23,7 @@ RUN chmod 777 ./entry.sh
 
 ENTRYPOINT [ "./entry.sh" ]
 
-CMD ["php-fpm7.3", "-F", "-R"]
+CMD ["php-fpm7.3", "-F"]
 
 #-F pour force to stay in foreground
 #-R pour allow pool to run as root
