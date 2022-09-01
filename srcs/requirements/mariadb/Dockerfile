@@ -23,4 +23,4 @@ RUN chmod 777 ./entry.sh
 
 ENTRYPOINT [ "./entry.sh" ]
 
-CMD ["mysqld"]
+CMD ["mysqld", "--user=root", "--skip-networking=0"]
