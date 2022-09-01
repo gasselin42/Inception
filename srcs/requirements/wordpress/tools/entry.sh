@@ -20,32 +20,32 @@ if [ "$1" = "php-fpm7.3" ]; then
 		wp core download --allow-root --path="/var/www/html"
 		rm -f /var/www/html/wp-config-sample.php
 
-		# wp config create \
-		# 	--allow-root \
-		# 	--dbname=wordpress \
-		# 	--dbuser=wordpress \
-		# 	--dbpass=password \
-		# 	--dbhost=mariadb \
-		# 	--dbcharset="utf8" \
-		# 	--dbcollate="utf8_general_ci" \
-		# 	--path="/var/www/html"
-
 		wp config create \
 			--allow-root \
-			--dbname=$DB_NAME \
-			--dbuser=$DB_USR \
-			--dbpass=$DB_PWD \
-			--dbhost=$DB_HOST \
+			--dbname=wordpress \
+			--dbuser=wordpress \
+			--dbpass=password \
+			--dbhost=mariadb \
 			--dbcharset="utf8" \
 			--dbcollate="utf8_general_ci" \
 			--path="/var/www/html"
 
+		# wp config create \
+		# 	--allow-root \
+		# 	--dbname=$DB_NAME \
+		# 	--dbuser=$DB_USR \
+		# 	--dbpass=$DB_PWD \
+		# 	--dbhost=$DB_HOST \
+		# 	--dbcharset="utf8" \
+		# 	--dbcollate="utf8_general_ci" \
+		# 	--path="/var/www/html"
+
 		wp core install --allow-root \
 			--url="${DOMAIN_NAME}" \
 			--title="${WP_TITLE}" \
-			--admin_user="${DB_USR}" \
-			--admin_password="${DB_PWD}" \
-			--admin_email="${DB_EMAIL}" \
+			--admin_user="${WP_ADMIN_LOGIN}" \
+			--admin_password="${WP_ADMIN_PWD}" \
+			--admin_email="${WP_ADMIN_EMAIL}" \
 			--skip-email \
 			--path="/var/www/html"
 
