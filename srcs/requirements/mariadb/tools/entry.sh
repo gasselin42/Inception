@@ -17,10 +17,10 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PWD';
 FLUSH PRIVILEGES;
 EOF
 
-	mysqld --skip-networking=1 &
+	mysqld --user=mysql --datadir=/var/lib/mysql &
 
 	for i in {0..30}; do
-		if mariadb -u root -proot --database=mysql <<<'SELECT 1;' &> /dev/null; then
+		if mysql --user=root --password=root --database=mysql <<<'SELECT 1;' &> /dev/null; then
 			break
 		fi
 		sleep 1
@@ -30,7 +30,7 @@ EOF
 		echo "Cannot connect to databse"
 	fi
 
-	mariadb -u root -proot < $dataDB && killall mysqld
+	mysql --user=root --password=root < $dataDB && killall mysqld
 fi
 
 exec "$@"
