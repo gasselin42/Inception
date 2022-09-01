@@ -9,7 +9,6 @@ RUN apt install -y php-fpm
 RUN apt install -y php-mysql
 RUN apt install -y php-common
 RUN apt install -y mariadb-client
-# RUN rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/www/html
 WORKDIR /var/www
