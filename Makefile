@@ -6,7 +6,7 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 13:55:36 by gasselin          #+#    #+#              #
-#    Updated: 2022/08/31 14:12:00 by gasselin         ###   ########.fr        #
+#    Updated: 2022/09/02 10:21:21 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ DATADIR = /home/gasselin/data
 all: up
 
 up:
-	mkdir $(DATADIR)/html
-	mkdir $(DATADIR)/mysql
+	mkdir -p $(DATADIR)/html
+	mkdir -p $(DATADIR)/mysql
 	docker-compose -f ./srcs/docker-compose.yml up -d
 
 down:
