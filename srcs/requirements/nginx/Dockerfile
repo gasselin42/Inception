@@ -10,7 +10,7 @@ RUN apt install -y openssl
 
 COPY ./conf/* /etc/nginx/http.d/default.conf
 
-RUN mkdir /etc/nginx/ssl
+RUN mkdir -p /etc/nginx/ssl
 
 RUN openssl req -x509 \
 	-sha256 -days 3650 \

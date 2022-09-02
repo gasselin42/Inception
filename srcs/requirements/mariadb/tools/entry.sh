@@ -4,12 +4,12 @@ set -euo pipefail
 
 if [ "$1" = "mysqld" ]; then
 
-	if [ ! -d "/var/lib/mysql/mysql" ]; then
-		mysql_install_db --datadir=/var/lib/mysql --user=mysql --skip-test-db > /dev/null
-	fi
-
-	dataDB=/var/lib/mysql/init_dataDB.sql
+	# if [ ! -d "/var/lib/mysql/mysql" ]; then
+	# fi
 	if [ ! -f $dataDB ]; then
+		mysql_install_db --datadir=/var/lib/mysql --user=mysql --skip-test-db > /dev/null
+
+		dataDB=/var/lib/mysql/init_dataDB.sql
 
 		cat > $dataDB <<EOF
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
@@ -32,7 +32,7 @@ EOF
 		# 	echo "Cannot connect to databse"
 		# fi
 
-		mysqld --user=root < $dataDB
+		mysql --user=root --password=root < $dataDB
 		killall mysqld
 	fi
 
