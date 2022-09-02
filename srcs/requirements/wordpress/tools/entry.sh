@@ -42,11 +42,11 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--allow-root \
 		$WP_USER_LOGIN \
 		$WP_USER_EMAIL \
-		--role=editor \
+		--role=author \
 		--user_pass=$WP_USER_PWD \
 		--path="/var/www/html"
 
-	# wp user create \
+	# wp super-admin add \
 	# 	--allow-root \
 	# 	$WP_ADMIN_LOGIN \
 	# 	$WP_ADMIN_EMAIL \
