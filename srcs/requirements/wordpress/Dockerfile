@@ -17,13 +17,13 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar
 RUN mv -f wp-cli.phar /usr/local/bin/wp
 
-COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./tools/* .
 RUN chmod 777 ./entry.sh
 
 ENTRYPOINT [ "./entry.sh" ]
 
-CMD ["php-fpm7.3", "-F"]
+CMD ["php-fpm7.3", "-F", "-R"]
 
 #-F pour force to stay in foreground
 #-R pour allow pool to run as root
