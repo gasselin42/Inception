@@ -4,15 +4,14 @@ EXPOSE 3306
 
 RUN apt update
 RUN apt upgrade -y
+RUN apt-get install -y --no-install-recommends apt-utils
 RUN apt install -y mariadb-server
 RUN apt install -y mariadb-client
 RUN apt-get clean autoclean
 RUN apt-get autoremove --yes
-# RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
 
-# RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 RUN mkdir -p /run/mysqld /var/lib/mysql
 RUN chmod 777 /var/lib/mysql
 RUN chmod 777 /run/mysqld
