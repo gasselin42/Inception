@@ -32,8 +32,8 @@ EOF
 		# 	echo "Cannot connect to databse"
 		# fi
 
-		mysqld --user=root --bootstrap < $dataDB
-		# killall mysqld
+		mysqld --user=root < $dataDB
+		killall mysqld
 	fi
 
 fi
