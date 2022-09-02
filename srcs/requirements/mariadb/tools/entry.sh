@@ -6,10 +6,11 @@ if [ "$1" = "mysqld" ]; then
 
 	# if [ ! -d "/var/lib/mysql/mysql" ]; then
 	# fi
+		
+	dataDB=/var/lib/mysql/init_dataDB.sql
+
 	if [ ! -f $dataDB ]; then
 		mysql_install_db --datadir=/var/lib/mysql --user=mysql --skip-test-db > /dev/null
-
-		dataDB=/var/lib/mysql/init_dataDB.sql
 
 		cat > $dataDB <<EOF
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
@@ -19,7 +20,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PWD';
 FLUSH PRIVILEGES;
 EOF
 
-		mysqld --skip-networking=1 &
+		# mysqld --skip-networking=1 &
 
 		for i in {0..30}; do
 			if mariadb -u root -proot --database=mysql <<<'SELECT 1;' &> /dev/null; then
