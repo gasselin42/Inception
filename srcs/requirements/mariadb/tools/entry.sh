@@ -20,7 +20,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PWD';
 FLUSH PRIVILEGES;
 EOF
 
-		# mysqld --skip-networking=1 &
+		mysqld --skip-networking=1 &
 
 		for i in {0..30}; do
 			if mariadb -u root -proot --database=mysql <<<'SELECT 1;' &> /dev/null; then
