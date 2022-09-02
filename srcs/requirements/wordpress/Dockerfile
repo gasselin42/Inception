@@ -4,7 +4,6 @@ EXPOSE 9000
 
 RUN apt update
 RUN apt upgrade -y
-RUN apt-get install -y --no-install-recommends apt-utils
 RUN apt install -y curl
 RUN apt install -y php-fpm
 RUN apt install -y php-mysql

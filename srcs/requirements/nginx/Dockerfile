@@ -4,7 +4,6 @@ EXPOSE 443
 
 RUN apt update
 RUN apt upgrade -y
-RUN apt-get install -y --no-install-recommends apt-utils
 RUN apt install -y nginx
 RUN apt install -y openssl
 RUN apt-get clean autoclean

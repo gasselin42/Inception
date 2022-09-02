@@ -4,7 +4,6 @@ EXPOSE 3306
 
 RUN apt update
 RUN apt upgrade -y
-RUN apt-get install -y --no-install-recommends apt-utils
 RUN apt install -y mariadb-server
 RUN apt install -y mariadb-client
 RUN apt-get clean autoclean
