@@ -6,6 +6,8 @@ RUN apt update
 RUN apt upgrade -y
 RUN apt install -y mariadb-server
 RUN apt install -y mariadb-client
+RUN apt-get clean autoclean
+RUN apt-get autoremove --yes
 # RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp

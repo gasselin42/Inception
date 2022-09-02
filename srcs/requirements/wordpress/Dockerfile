@@ -9,6 +9,8 @@ RUN apt install -y php-fpm
 RUN apt install -y php-mysql
 RUN apt install -y php-common
 RUN apt install -y mariadb-client
+RUN apt-get clean autoclean
+RUN apt-get autoremove --yes
 
 RUN mkdir -p /var/www/html /run/php
 WORKDIR /var/www

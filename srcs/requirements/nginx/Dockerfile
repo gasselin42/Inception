@@ -6,6 +6,8 @@ RUN apt update
 RUN apt upgrade -y
 RUN apt install -y nginx
 RUN apt install -y openssl
+RUN apt-get clean autoclean
+RUN apt-get autoremove --yes
 # RUN rm -rf /var/lib/apt/lists/*
 
 COPY ./conf/* /etc/nginx/http.d/default.conf
