@@ -12,7 +12,7 @@ if [ "$1" = "mysqld" ]; then
 	if [ ! -f $dataDB ]; then
 		mysql_install_db --datadir=/var/lib/mysql --user=mysql --skip-test-db > /dev/null
 
-		cat > $dataDB <<EOF
+		cat > "$dataDB" <<EOF
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
 CREATE USER IF NOT EXISTS '$DB_USR'@'%' IDENTIFIED BY '$DB_PWD';
 GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USR'@'%';
