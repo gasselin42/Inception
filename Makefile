@@ -6,7 +6,7 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 13:55:36 by gasselin          #+#    #+#              #
-#    Updated: 2022/09/06 14:20:19 by gasselin         ###   ########.fr        #
+#    Updated: 2022/09/06 14:23:14 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ fclean: vclean
 	rm -rf $(DATADIR)
 
 eval:
-	docker stop $(docker ps -qa); \
+	@docker stop $(docker ps -qa); \
 	docker rm $(docker ps -qa); \
 	docker rmi -f $(docker images -qa); \
 	docker volume rm $(docker volume ls -q); \
