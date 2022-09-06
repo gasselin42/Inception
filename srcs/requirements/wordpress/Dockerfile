@@ -18,7 +18,7 @@ RUN chmod +x wp-cli.phar
 RUN mv -f wp-cli.phar /usr/local/bin/wp
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
-COPY ./tools/sntry.sh .
+COPY ./tools/entry.sh .
 RUN chmod 777 ./entry.sh
 
 ENTRYPOINT [ "./entry.sh" ]
