@@ -18,7 +18,7 @@ RUN chown -R mysql:mysql /var/lib/mysql
 RUN chown -R mysql:mysql /run/mysqld
 
 COPY ./conf/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ./tools/* .
+COPY ./tools/entry.sh .
 RUN chmod 777 ./entry.sh
 
 ENTRYPOINT [ "./entry.sh" ]

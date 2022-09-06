@@ -6,7 +6,7 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 13:55:36 by gasselin          #+#    #+#              #
-#    Updated: 2022/09/06 11:54:40 by gasselin         ###   ########.fr        #
+#    Updated: 2022/09/06 14:20:19 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,5 +39,12 @@ fclean: vclean
 	rm -rf $(DATADIR)/html
 	rm -rf $(DATADIR)/mysql
 	rm -rf $(DATADIR)
+
+eval:
+	docker stop $(docker ps -qa); \
+	docker rm $(docker ps -qa); \
+	docker rmi -f $(docker images -qa); \
+	docker volume rm $(docker volume ls -q); \
+	docker network rm $(docker network ls -q) 2> /dev/null
 
 .PHONY: all up down build clean vclean fclean
