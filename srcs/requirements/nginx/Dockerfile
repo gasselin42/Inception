@@ -17,7 +17,7 @@ RUN openssl req -x509 \
 	-sha256 -days 3650 \
 	-nodes -newkey rsa:2048 \
 	-subj "/CN=gasselin.42.fr/C=CA/ST=Quebec/L=Quebec City/O=42 Network/OU=42 Quebec" \
-	-keyout /etc/nginx/ssl/server.key \
-	-out /etc/nginx/ssl/server.crt
+	-out /etc/ssl/gasselin.pem \
+	-keyout /etc/ssl/gasselin.key
 
 CMD ["nginx", "-g", "daemon off;"]
