@@ -3,9 +3,6 @@
 set -euo pipefail
 
 if [ "$1" = "mysqld" ]; then
-
-	# if [ ! -d "/var/lib/mysql/mysql" ]; then
-	# fi
 		
 	dataDB=/var/lib/mysql/init_dataDB.sql
 
