@@ -46,14 +46,6 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 		--user_pass=$WP_USER_PWD \
 		--path="/var/www/html"
 
-	# wp super-admin add \
-	# 	--allow-root \
-	# 	$WP_ADMIN_LOGIN \
-	# 	$WP_ADMIN_EMAIL \
-	# 	--role=administrator \
-	# 	--user_pass=$WP_ADMIN_PWD \
-	# 	--path="/var/www/html"
-
 	wp theme install twentyten --allow-root --activate --path="/var/www/html"
 
 fi
