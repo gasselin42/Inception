@@ -6,10 +6,10 @@ RUN apt update
 RUN apt upgrade -y
 RUN apt install -y nginx
 RUN apt install -y openssl
+RUN apt-get clean autoclean
+RUN apt-get autoremove --yes
 
 COPY ./conf/default.conf /etc/nginx/conf.d
-
-RUN mkdir -p /etc/nginx/ssl
 
 RUN openssl req -newkey rsa:4096 \
 	-x509 -sha256 -days 365 -nodes \
