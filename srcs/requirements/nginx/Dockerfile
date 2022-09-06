@@ -13,11 +13,10 @@ COPY ./conf/* /etc/nginx/http.d/default.conf
 
 RUN mkdir -p /etc/nginx/ssl
 
-RUN openssl req -x509 \
-	-sha256 -days 3650 \
-	-nodes -newkey rsa:2048 \
-	-subj "/CN=gasselin.42.fr/C=CA/ST=Quebec/L=Quebec City/O=42 Network/OU=42 Quebec" \
+RUN openssl req -newkey rsa:4096 \
+	-x509 -sha256 -days 365 -nodes \
 	-out /etc/ssl/gasselin.pem \
-	-keyout /etc/ssl/gasselin.key
+	-keyout /etc/ssl/gasselin.key \
+	-subj "/C=CA/ST=Quebec/L=Quebec/O=42 School/OU=gasselin/CN=gasselin.42.fr"
 
 CMD ["nginx", "-g", "daemon off;"]
